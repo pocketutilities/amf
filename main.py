@@ -2,14 +2,18 @@ import unittest
 from common_functions import *
 from todoist_functions import *
 from time import sleep
+from time import time
 from appium import webdriver
 from appium.webdriver.common.mobileby import By
 
+print(str(time()))
+
+prjname = str(time())
 
 # if __name__ == '__main__':
 
 # print(fetch_all_projects())
-# print(create_project("testproject2"))
+
 
 # Check if app is already installed or Install the App on the emulator
 # Launch the app and Login to the application
@@ -34,8 +38,11 @@ class InterviewTests(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         print("inside quit")
-
     #    #self.driver.quit()
+
+    def test_0_create_project_with_API(self):
+        print(create_project(prjname))
+
 
     def test_1_verify_if_app_is_ready(self):
         print("Case: Test if the app main screen is launched and if the continue with email button appears")
@@ -60,11 +67,20 @@ class InterviewTests(unittest.TestCase):
         self.driver.find_element_by_id("btn_log_in").click()
         waitfor(self, 10, By.CLASS_NAME,"android.widget.ImageButton")
 
-    def test_3_check_project_exists(self):
+    def test_3_verify_if_project_exists(self):
+        print("Test Case id: 1 - Verify that test project created from API exists on the UI")
         waitfor(self, 10, By.CLASS_NAME, "android.widget.ImageButton")
+        sleep(2)
         self.driver.find_element_by_class_name("android.widget.ImageButton").click()
-        waitfor(self, 10, By.LINK_TEXT, "Projects")
-        self.driver.find_element_by_link_text("Projects").click()
+        waitfor(self, 10, By.XPATH, "//*[@text='Projects']")
+        self.driver.find_element_by_xpath("//*[@text='Projects']").click()
+        #alternate method self.driver.find_elements(By.CLASS_NAME,"android.widget.RelativeLayout").__getitem__(3).click()
+        waitfor(self, 10, By.XPATH, "//*[@text='"+prjname+"']")
+        self.driver.find_element_by_xpath("//*[@text='"+prjname+"']").click()
+        waitfor(self, 10, By.XPATH,"//*[@text='How to best use projects']") # This verifies that we have reached to projects page
+        print("Test Case id: 1 [Result] Passed")
+
+
 
 
 
