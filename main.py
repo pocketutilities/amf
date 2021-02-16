@@ -1,7 +1,9 @@
 import unittest
 from common_functions import *
+from todoist_functions import *
 from time import sleep
 from appium import webdriver
+from appium.webdriver.common.mobileby import By
 
 #if __name__ == '__main__':
 
@@ -37,7 +39,24 @@ class InterviewTests(unittest.TestCase):
         #self.driver.quit()
 
     def test_1_verify_if_app_is_ready(self):
-        print("inside first test")
+        print("Case: Test if the app main screen is launched and if the continue with email button appears")
+        waitfor(self,10,By.ID,"btn_welcome_continue_with_email")
+
+    def test_2_login(self):
+        waitfor(self,10,By.ID,"btn_welcome_continue_with_email")
+        self.driver.find_element_by_id("btn_welcome_continue_with_email").click()
+        waitfor(self,10,By.ID,"email_exists_input")
+        self.driver.find_element_by_id("email_exists_input").send_keys(Auth_Email)
+        waitfor(self, 10, By.ID, "btn_continue_with_email")
+        self.driver.find_element_by_id("btn_continue_with_email").click()
+        waitfor(self,10,By.ID,"log_in_password")
+        self.driver.find_element_by_id("log_in_password").send_keys(Auth_Password)
+        waitfor(self,10,By.ID,"btn_log_in")
+        self.driver.find_element_by_id("btn_log_in").click()
+        sleep(20)
+
+
+
 
 
 if __name__=="__main__":
