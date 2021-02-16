@@ -1,5 +1,8 @@
 from time import sleep
 
+
+
+## Dynamic wait + Raise clean failure if element not found
 def waitfor(self, timeout, attribute, value, suppressfailure=1):
     #suppressfailure disable= 1
     #suppressfailure enable = 0
