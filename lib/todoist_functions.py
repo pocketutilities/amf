@@ -100,7 +100,7 @@ def exe_post(input_url, input_values):
     try:
         r = requests.post(url=input_url, json=input_values)
         data = r.json()
-    except ValueError:
-        data = "[{Error}]"
-        event_response = "error: %s" % ValueError
+    except requests.exceptions.RequestException as e:
+        data = "[{Error}] %s" % e
+        event_response = "error: %s" % e
     return data
