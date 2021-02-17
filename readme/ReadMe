@@ -1,0 +1,40 @@
+Requirement
+
+- Appium server should be setup on the system
+- Emulator/Device should be connected and the connection devicename should be updated in the setup
+- internet should be working on the machine
+- python should be installed
+- java should be set - in case UI Automator debugging needs to be done.
+- Adb should be running
+- Pycharm IDE as per the requirement
+- Setup should be done as explained in the Setup documentation.
+- Android_Home, Java_Home should be set
+
+
+Assumptions:
+- Tests are created as a scenario to save time and efforts - Most of the code is written in library functions so it can be re-used though.
+- No test plan/ test control module is written as it will take a lot of time and not in the scope for now :)
+- I didn't use the built in app API as it was not allowed and used python requests to execute the GET/POST requests. (I think this was the requirement)
+
+Function Explaination:
+
+*common_functions.py - Generic Functions for Automation
+*todoit_functions.py - Functions Specific to Application - Mostly API
+*We can create a GUI functions as well for code reusability.
+waitfor - Dynamically waits for the element and raises fail condition with a message if the element is not found thus helps in debug at what stage the test was failed.
+logit - Can be improved a lot , Just to separate the debug logs from verbose or any kind of logger/reporting implementation.
+
+
+
+Scope for improvement
+- More exception handling
+- Auto Screenshot on failures
+- Fault Finder Module to easily pinpoint the error causing case/script
+- Connect with Jenkins/CircleCI/Docker etc
+- Deep Confirmations on each step for the previous step to have executed successfully or not.
+- API call improvements
+- Fault Tolerance and Recovery Module - Recover from failed cases
+- Retry - Retry Failed Cases to confirm and get trustful results.
+- Tests can be written with Data driven approach.
+...
+
