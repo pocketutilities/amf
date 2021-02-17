@@ -1,0 +1,4 @@
+Test results xml will be created here
+
+This file can be plugged in Jenkins xml plugin to show and count test cases.
+This xml can be used to insert results in database or reporting tools.
