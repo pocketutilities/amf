@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuite name="WebTests-20210218031750" tests="1" time="0.000" failures="0" errors="1">
+	<testcase classname="WebTests" name="test_1_api_create_project" time="0.000">
+		<error type="AttributeError" message="'WebTests' object has no attribute 'webdriver'"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Depinder Bharti\PycharmProjects\pythonProject\main2.py", line 26, in test_1_api_create_project
+    self.webdriver.get("http://amazon.com")
+AttributeError: 'WebTests' object has no attribute 'webdriver'
+]]></error>
+	</testcase>
+	<system-out><![CDATA[Init - Setting up web browser
+TestCase: 1 - Verify that project can be created via API
+TearDown - End of Test Scenario
+]]></system-out>
+	<system-err><![CDATA[]]></system-err>
+</testsuite>
