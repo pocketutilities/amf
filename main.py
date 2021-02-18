@@ -35,14 +35,14 @@ class InterviewTests(unittest.TestCase):
         logit(create_project(self.prjname), 0)
         if verify_project_created(self.prjname):
             logit("Project [" + self.prjname + "] is successfully created via API", 0)
-            logit("[Result] Passed", 0)
+            logit("[Passed]", 0)
         else:
             self.fail("[Error] Couldn't create Project [" + self.prjname + "] via API, Please check")
 
     def test_2_android_verify_if_app_is_launched(self):
         logit("TestCase: 2 - Test if the app main screen is launched", 0)
         waitfor(self, 10, By.ID, "btn_welcome_continue_with_email")
-        logit("[Result] Passed", 0)
+        logit("[Passed]", 0)
 
     def test_3_android_login(self):
         logit("TestCase: 3 - Test if the app login works", 0)
@@ -51,7 +51,7 @@ class InterviewTests(unittest.TestCase):
         #Todo: The app might display pick up use dialog from previous authentication, Cancel for fresh login.
         #More such scenarios might need to be explored for a very robust script
         if waitfor(self, 5, By.ID, "com.google.android.gms:id/credentials_hint_picker_title", 0):
-            logit("Choose from ids dialog appeared", 0)
+            logit("[Passed] - Choose from ids dialog appeared", 0)
             waitfor(self, 2, By.ID, "com.google.android.gms:id/cancel")
             self.driver.find_element_by_id("com.google.android.gms:id/cancel").click()
         waitfor(self, 10, By.ID, "email_exists_input")
@@ -59,12 +59,12 @@ class InterviewTests(unittest.TestCase):
         waitfor(self, 10, By.ID, "btn_continue_with_email")
         self.driver.find_element_by_id("btn_continue_with_email").click()
         waitfor(self, 10, By.ID, "log_in_password")
-        logit("Passed - Navigated to Password screen")
+        logit("[Passed] - Navigated to Password screen")
         self.driver.find_element_by_id("log_in_password").send_keys(Auth_Password)
         waitfor(self, 10, By.ID, "btn_log_in")
         self.driver.find_element_by_id("btn_log_in").click()
         waitfor(self, 10, By.CLASS_NAME, "android.widget.ImageButton")
-        logit("[Result] Passed - Logged in Successfully", 0)
+        logit("[Passed] - Logged in Successfully", 0)
 
     def test_4_android_verify_if_project_exists(self):
         logit("TestCase: 4 - Verify that test project created from API exists on the UI", 0)
@@ -72,16 +72,16 @@ class InterviewTests(unittest.TestCase):
         sleep(2)
         self.driver.find_element_by_class_name("android.widget.ImageButton").click()
         waitfor(self, 10, By.XPATH, "//*[@text='Projects']")
-        logit("Passed - Menu link is opened, Projects category is visible",0)
+        logit("[Passed] - Menu link is opened, Projects category is visible",0)
         self.driver.find_element_by_xpath("//*[@text='Projects']").click()
         # alternate method self.driver.find_elements(By.CLASS_NAME,"android.widget.RelativeLayout").__getitem__(
         # 3).click()
         waitfor(self, 10, By.XPATH, "//*[@text='" + self.prjname + "']")
-        logit("Passed - The newly created project is visible", 0)
+        logit("[Passed] - The newly created project is visible", 0)
         self.driver.find_element_by_xpath("//*[@text='" + self.prjname + "']").click()
         waitfor(self, 3, By.XPATH,
                 "//*[@text='How to best use projects']", 1)  # This verifies that we have reached to projects page
-        logit("[Result] Passed - Able to open new project screen", 0)
+        logit("[Passed] - Able to open new project screen", 0)
 
     def test_5_android_create_task(self):
         logit("TestCase: 5 - Android UI - Create Task", 0)
@@ -89,12 +89,12 @@ class InterviewTests(unittest.TestCase):
         self.driver.find_element_by_id("fab").click()
         sleep(1)
         waitfor(self, 10, By.CLASS_NAME, "android.widget.EditText")
-        logit("Passed - The Create Task dialog has appeared successfully", 0)
+        logit("[Passed] - The Create Task dialog has appeared successfully", 0)
         self.driver.find_element_by_class_name("android.widget.EditText").send_keys(self.taskname)
         waitfor(self, 2, By.ID, "android:id/button1")
         self.driver.find_element_by_id("android:id/button1").click()
         # Todo: An extra check might be good here
-        logit("Passed - The Task has been created successfully", 0)
+        logit("[Passed] - The Task has been created successfully", 0)
 
     def test_6_api_verify_task(self):
         logit("TestCase: 6 - API - Verify Task", 0)
@@ -113,7 +113,7 @@ class InterviewTests(unittest.TestCase):
                 break
 
         if found:
-            logit("Passed - Found the task in the correct project", 0)
+            logit("[Passed] - Found the task in the correct project", 0)
         else:
             logit("[Failed] to find the task in the correct project", 0)
             self.fail("Failed to find the task in the correct project", 0)
@@ -129,7 +129,7 @@ class InterviewTests(unittest.TestCase):
         sleep(10)
         ##Some Dynamic wait disappearance method can be written here like waitfor waits , we can check for disappearance.
         if waitfor(self, 2, By.XPATH, "//*[@text='" + self.taskname + "']", 0) == False:
-            logit("Passed - The Task has been set to complete", 0)
+            logit("[Passed] - The Task has been set to complete", 0)
         else:
             logit("[Error]: Issue while putting Task to complete", 0)
             self.fail("[Error]: Issue while putting Task to complete")
@@ -138,12 +138,12 @@ class InterviewTests(unittest.TestCase):
         logit("TestCase: 8 - API - Reopen the task", 0)
         reopen_item(self.taskname, self.prjname)
         # Todo: an extra check might be good here
-        logit("[Result] Passed", 0)
+        logit("[Passed]", 0)
 
     def test_9_Android_verify_reopened_task(self):
         logit("TestCase: 9 - Android - Verify if the reopened task appears on the page", 0)
         waitfor(self, 20, By.XPATH, "//*[@text='" + self.taskname + "']")
-        logit("[Result] Passed, The server has synced with the UI - Reopen Confirmed", 0)
+        logit("[Passed], The server has synced with the UI - Reopen Confirmed", 0)
 
 
 if __name__ == '__main__':
