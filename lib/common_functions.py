@@ -1,11 +1,10 @@
 from time import sleep
 
 
-
 ## Dynamic wait + Raise clean failure if element not found
 def waitfor(self, timeout, attribute, value, suppressfailure=1):
-    #suppressfailure disable= 1
-    #suppressfailure enable = 0
+    # suppressfailure disable= 1
+    # suppressfailure enable = 0
     driver = self.driver
     thinktime = 1
     status = False
@@ -29,23 +28,29 @@ def waitfor(self, timeout, attribute, value, suppressfailure=1):
             if (suppressfailure == 1):
                 print("TimeOut: [FAILED] Element " + attribute + " with value " + value + " not found")
                 self.fail("Case Status: [Failed]")
-            #else:
+            # else:
             #    print("debug: Element " + attribute + " with value " + value + " not found")
             break
     return status
 
-def logit(msg,log_level=0):
+
+def logit(msg, log_level=0):
     ### We can create a more advanced logger function to analyze and process logs. - Not in the scope of this interview
-    if log_level == 0:  #Verbose
+    if log_level == 0:  # Verbose
         print(msg)
-    #Verbose
-    #Debug
-    #Production
-    #Error
-    #Exceptions
-    #Libissues
+    # Verbose
+    # Debug
+    # Production
+    # Error
+    # Exceptions
+    # Libissues
     ## So many possibilities here :)
 
 
 def normalize_text(input):
-    return str(input).replace("$","").replace("US","").strip()
+    return str(input).replace("$", "").replace("US", "").strip()
+
+
+def dic_add(website, price, name, link):
+    dict = {"website": website, "price": price, "name": name, "link": link}
+    return dict
