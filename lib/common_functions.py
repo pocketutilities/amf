@@ -45,3 +45,7 @@ def logit(msg,log_level=0):
     #Exceptions
     #Libissues
     ## So many possibilities here :)
+
+
+def normalize_text(input):
+    return str(input).replace("$","").replace("US","").strip()

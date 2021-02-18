@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<testsuite name="WebTests-20210218205417" tests="1" time="19.064" failures="0" errors="0">
+	<testcase classname="WebTests" name="test_1_open_amazon_and_fetch_results" time="19.064"/>
+	<system-out><![CDATA[Init - Setting up web browser
+TestCase: 1 - Open Amazon and fetch results for Iphone 11
+599.95
+TearDown - End of Test Scenario
+]]></system-out>
+	<system-err><![CDATA[]]></system-err>
+</testsuite>

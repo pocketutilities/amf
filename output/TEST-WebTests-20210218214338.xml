@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<testsuite name="WebTests-20210218214338" tests="3" time="62.062" failures="0" errors="2">
+	<testcase classname="WebTests" name="test_1_open_amazon_and_fetch_results" time="25.589"/>
+	<testcase classname="WebTests" name="test_2_open_ebay_and_fetch_results" time="36.473">
+		<error type="AssertionError" message="Case Status: [Failed]"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Depinder Bharti\PycharmProjects\pythonProject\main2.py", line 51, in test_2_open_ebay_and_fetch_results
+    waitfor(self, 10, By.ID, "prcIsum_bidPrice")
+  File "C:\Users\Depinder Bharti\PycharmProjects\pythonProject\lib\common_functions.py", line 31, in waitfor
+    self.fail("Case Status: [Failed]")
+AssertionError: Case Status: [Failed]
+]]></error>
+	</testcase>
+	<testcase classname="WebTests" name="test_3_combine_the_results" time="0.000">
+		<error type="NameError" message="name 'ebay_price' is not defined"><![CDATA[Traceback (most recent call last):
+  File "C:\Users\Depinder Bharti\PycharmProjects\pythonProject\main2.py", line 60, in test_3_combine_the_results
+    print("Ebay: " + str(ebay_price))
+NameError: name 'ebay_price' is not defined
+]]></error>
+	</testcase>
+	<system-out><![CDATA[Init - Setting up web browser
+TestCase: 1 - Open Amazon and fetch results for Iphone 11
+829.95
+TestCase: 2 - Open Ebay and fetch results for Iphone 11
+TimeOut: [FAILED] Element id with value prcIsum_bidPrice not found
+TestCase: 3 - Fetch values from Global and handle data
+Amazon: 829.95
+TearDown - End of Test Scenario
+]]></system-out>
+	<system-err><![CDATA[]]></system-err>
+</testsuite>
