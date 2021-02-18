@@ -1,6 +1,14 @@
 #Author: Depinder Bharti
 #Email: depinder@gmail.com
 
+Execute:
+
+main.py - For todoist tests
+main2.py - For WebGUI tests
+
+
+
+
 Requirement
 
 - Appium server should be setup on the system
